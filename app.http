@@ -1,0 +1,332 @@
+###
+GET http://localhost:8000/api/
+
+// users
+###
+GET http://localhost:8000/api/users/
+
+// user create user
+###
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+    "fullName": "Tildah Malinda",
+    "email": "tildah@malinda.com",
+    "contactPhone": "+2234567890",
+    "address": "123 Main St, New York, NY 10001",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "Female"
+}
+
+// user update user
+###
+PUT http://localhost:8000/api/users/1
+Content-Type: application/json
+
+{
+
+    "fullName": "John Doe",
+    "email": "john.doe@example.com",
+    "contactPhone": "1234567890",
+    "address": "123 Main St",
+    "role": "user",
+    "location": "New York",
+    "street": "Nain St",
+    "dateOfBirth": "1990-01-01 00:00:00",
+    "gender": "male"
+}
+
+// user delete user
+###
+DELETE http://localhost:8000/api/users/5
+
+
+// ========Authentications=======
+// fetch all authenticaion entries
+###
+GET http://localhost:8000/api/authentication/
+
+// create authentication entry
+###
+POST http://localhost:8000/api/authentication
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "password": "hashed_password_3",
+}
+
+
+// ========branches=======
+// fetch all branches
+###
+GET http://localhost:8000/api/branches/
+
+// create branch
+###
+POST http://localhost:8000/api/branches
+Content-Type: application/json
+
+{
+    "name": "Nairobi Branch",
+    "address": "123 Main St, Nairobi, Kenya",
+    "contactPhone": "+254712345678"
+}
+
+// update branch
+###
+PUT http://localhost:8000/api/branches/1
+Content-Type: application/json
+
+{
+    "name": "Nairobi Branch",
+    "address": "123 Main St, Nairobi, Kenya",
+    "contactPhone": "+254712345678"
+}
+
+// delete branch
+###
+DELETE http://localhost:8000/api/branches/1
+
+
+
+// ========fleetmanagement=======
+// fetch all fleetmanagement
+###
+GET http://localhost:8000/api/fleet-management/
+
+// create fleetmanagement
+###
+POST http://localhost:8000/api/fleet-management
+Content-Type: application/json
+
+{
+    "fleetId": 1,
+    "vehicleId": 1,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.25,
+    "currentValue": 150000.00,
+    "maintenanceCost": 1500.00,
+    "status": "active"
+}
+
+// update fleetmanagement
+###
+PUT http://localhost:8000/api/fleet-management/1
+Content-Type: application/json
+
+{
+    "fleetId": 1,
+    "vehicleId": 1,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.25,
+    "currentValue": 150000.00,
+    "maintenanceCost": 1500.00,
+    "status": "active"
+}
+
+//====vehiclespecifications====
+// fetch all vehiclespecifications
+###
+GET http://localhost:8000/api/vehicle-specifications/5
+
+// create vehiclespecifications
+###
+POST http://localhost:8000/api/vehicle-specifications
+Content-Type: application/json
+
+{
+    "vehicleId": 1,
+    "manufacturer": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "fuelType": "Gasoline",
+    "engineCapacity": "1.8L",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "color": "White",
+    "features": "Air Conditioning, Bluetooth, Backup Camera",
+    "rentalRate": 50.00,
+    "availability": true
+}
+
+
+//====vehicles====
+// fetch all vehicles
+###
+GET http://localhost:8000/api/vehicles/
+
+// create vehicle
+###
+POST http://localhost:8000/api/vehicles
+Content-Type: application/json
+
+{
+    "manufacturer": "Mercedes",
+    "model": "GLCCC",
+    "year": 2021,
+    "fuelType": "Gasoline",
+    "engineCapacity": "1.8L",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "color": "White",
+    "features": "Air Conditioning, Bluetooth, Backup Camera",
+    "rentalRate": 50.00,
+    "availability": true
+}
+
+// update vehicle
+###
+PUT http://localhost:8000/api/vehicles/8
+Content-Type: application/json
+
+{
+    "manufacturer": "Mercedes",
+    "model": "GLE",
+    "year": 2022,
+    "fuelType": "Gasoline",
+    "engineCapacity": "1.8L",
+    "transmission": "Automatic",
+    "seatingCapacity": 5,
+    "color": "White",
+    "features": "Air Conditioning, Bluetooth, Backup Camera",
+    "rentalRate": 50.00,
+    "availability": false
+}
+
+
+//=====support-ticket=======
+###
+GET http://localhost:8000/api/support-tickets/
+
+// create support-ticket
+###
+POST http://localhost:8000/api/support-tickets
+Content-Type: application/json
+
+{
+    "userId": 5,
+    "subject": "I need help",
+    "description": "I need help with my booking",
+    "status": "pending"
+}
+
+// update support-ticket
+###
+PUT http://localhost:8000/api/support-tickets/5
+Content-Type: application/json
+
+{
+    "userId": 5,
+    "subject": "I need help",
+    "description": "I need help with my booking",
+    "status": "resolved"
+}
+
+###
+GET http://localhost:8000/api/support-tickets/user/5
+
+
+//=====bookings=======
+// fetch all bookings
+###
+GET http://localhost:8000/api/bookings-branch-vehicle/
+
+###
+GET http://localhost:8000/api/bookings/
+
+// create booking
+###
+POST http://localhost:8000/api/bookings
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "vehicleId": 2,
+    "branchId": 2,
+    "bookingDate": "2021-09-01",
+    "returnDate": "2021-09-05",
+    "totalAmount": 200.00,
+    "bookingStatus": "pending"
+
+}
+
+// update booking
+### 
+PUT http://localhost:8000/api/bookings/4
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "vehicleId": 2,
+    "branchId": 2,
+    "bookingDate": "2021-09-01",
+    "returnDate": "2021-09-05",
+    "totalAmount": 200.00,
+    "bookingStatus": "confirmed"
+}
+
+###
+GET http://localhost:8000/api/bookings-branch-vehicle
+
+
+
+//=====payments checkout-sessions=======
+// creating a checkout session
+###
+POST http://localhost:8000/api/create-checkout-session
+Content-Type: application/json
+
+{
+
+    "bookingId": 4,
+    "amount": 344.56
+}
+
+// testing checkout session
+###
+POST http://localhost:8000/api/test-checkout-session
+Content-Type: application/json
+
+{
+    "bookingId": 4,
+    "paymentDate": "2021-09-01 00:00:00",
+    "amount": 00.00,
+    "paymentStatus": "pending",
+    "paymentMethod": "credit_card",
+    "transactionId": "ref_1234567890"
+}
+
+//========Authentications and Authorization=======
+
+// register
+###
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+    "fullName": "Kepha Moses",
+    "email": "kepharmoses@gmail.com",
+    "contactPhone": "+254712345678",
+    "address": "Kutus, Kenya",
+    "password": "mypassword123",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "male",
+    "role": "admin"
+}
+
+
+// login
+###
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "kepharmoses@gmail.com",
+    "password": "mypassword123"
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "verbatimModuleSyntax": false,
+    "skipLibCheck": true,
+    "noEmit": false, // Set to false when building for production or testing/ prevent ts from emmiting js files
+    "esModuleInterop": true,
+    "baseUrl": ".", // Base directory to resolve non-relative module names
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node"],
+    "lib": ["esnext"],
+    "paths": { "*": ["./src/*"] } // Path mapping for module resolution
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

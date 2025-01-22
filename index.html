@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Documentation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      h2 {
+        color: #666;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      .endpoint {
+        margin: 20px 0;
+      }
+
+      .endpoint h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .endpoint p {
+        background: #f9f9f9;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        background: #333;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Welcome to the API Documentation</h1>
+      <p>
+        This API provides a variety of endpoints to interact with our
+        application. Below is a list of available endpoints and their
+        descriptions.
+      </p>
+
+      <div class="endpoint">
+        <h2>Authentication</h2>
+        <h3>POST /api/login</h3>
+        <p>Authenticates a user and returns a JWT token.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Users</h2>
+        <h3>GET /users</h3>
+        <p>Fetches a list of users.</p>
+        <h3>POST /users</h3>
+        <p>Creates a new user.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Branches</h2>
+        <h3>GET /branches</h3>
+        <p>Fetches a list of branches.</p>
+        <h3>POST /branches</h3>
+        <p>Creates a new branches.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Fleet-Management</h2>
+        <h3>GET /fleet-management</h3>
+        <p>Fetches a list of fleet-management.</p>
+        <h3>POST /fleet-management</h3>
+        <p>Creates a new fleet-management.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>vehicle-specifications</h2>
+        <h3>GET /vehicle-specifications</h3>
+        <p>Fetches a list of vehicle-specifications.</p>
+        <h3>POST /vehicle-specifications</h3>
+        <p>Creates a new vehicle-specifications.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Vehicles</h2>
+        <h3>GET /vehicles</h3>
+        <p>Fetches a list of vehicles.</p>
+        <h3>POST /vehicles</h3>
+        <p>Creates a new vehicles.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>support-tickets</h2>
+        <h3>GET /support-tickets</h3>
+        <p>Fetches a list of support-tickets.</p>
+        <h3>POST /support-tickets</h3>
+        <p>Creates a new support-tickets.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Bookings</h2>
+        <h3>GET /bookings</h3>
+        <p>Fetches a list of bookings.</p>
+        <h3>POST /bookings</h3>
+        <p>Creates a new bookings.</p>
+      </div>
+
+      <div class="endpoint">
+        <h2>Stripe Checkout</h2>
+        <h2>POST /create-checkout-session</h2>
+        <p>Creates a create-checkout-session.</p>
+      </div>
+
+      <footer>
+        <p>API Documentation &copy; 2024</p>
+        <p>Server is running on port: 8000</p>
+      </footer>
+    </div>
+  </body>
+</html>
