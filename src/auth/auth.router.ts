@@ -3,7 +3,7 @@ import { registerUserController, loginUserController } from "./auth.controller";
 import { zValidator } from "@hono/zod-validator";
 import { loginUserSchema } from "../validator";
 
-export const authRouter = new Hono();
+export const authRouter = new Hono().basePath("/api");
 
 authRouter.post("/register", registerUserController);
 authRouter.post(
