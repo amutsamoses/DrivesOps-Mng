@@ -18,41 +18,41 @@ export const authenticationRouter = new Hono();
 
 // GET all authentication - /api/authentication
 authenticationRouter.get(
-  "/authentication",
+  "/api/authentication",
   adminRoleAuth,
   listAllAuthenticationController
 );
 
 // GET a single authentication entry by user ID - /api/auth/:userId
 authenticationRouter.get(
-  "/authentication/:userId",
+  "/api/authentication/:userId",
   adminRoleAuth,
   getAuthenticationByIdController
 );
 
 // POST create a new authentication entry - /api/auth
 authenticationRouter.post(
-  "/authentication",
+  "/api/authentication",
   adminRoleAuth,
   createAuthenticationController
 );
 
 // PUT update an authentication entry by user ID - /api/auth/:userId
 authenticationRouter.put(
-  "/authentication/:userId",
+  "/api/authentication/:userId",
   adminRoleAuth,
   updateAuthenticationController
 );
 
 // DELETE an authentication entry by user ID - /api/auth/:userId
 authenticationRouter.delete(
-  "/authentication/:userId",
+  "/api/authentication/:userId",
   adminRoleAuth,
   deleteAuthenticationController
 );
 
 authenticationRouter.post(
-  "/authentication",
+  "/api/authentication",
   zValidator("json", authenticationSchema, (results, c) => {
     if (!results.success) {
       return c.json(results.error, 400);

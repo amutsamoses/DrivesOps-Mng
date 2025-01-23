@@ -14,21 +14,21 @@ export const bookingsRouter = new Hono();
 
 // GET all bookings - /api/booking
 bookingsRouter.get(
-  "/bookings-branch-vehicle",
+  "/api/bookings-branch-vehicle",
   adminOrUserRoleAuth,
   listAllBookingWithBranchAndVehicleController
 );
 
 // GET a single booking by ID - /api/bookings/:id
 bookingsRouter.get(
-  "/bookings/:id",
+  "/api/bookings/:id",
   adminOrUserRoleAuth,
   getBookingByIdWithBranchAndVehicleController
 );
 
 // POST create a new booking - /api/bookings
 bookingsRouter.post(
-  "/bookings",
+  "/api/bookings",
   zValidator("json", bookingSchema),
   adminOrUserRoleAuth,
   createBookingController
@@ -38,10 +38,10 @@ bookingsRouter.post(
 
 // PUT update a booking by ID - /api/bookings/:id
 bookingsRouter.put(
-  "/bookings/:id",
+  "/api/bookings/:id",
   adminOrUserRoleAuth,
   updateBookingController
 );
 
 // DELETE a booking by ID - /api/bookings/:id
-bookingsRouter.delete("/bookings/:id", adminRoleAuth, deleteBookingController);
+bookingsRouter.delete("/api/bookings/:id", adminRoleAuth, deleteBookingController);

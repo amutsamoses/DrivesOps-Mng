@@ -9,7 +9,7 @@ import {
 } from "./users.controller";
 import { adminOrUserRoleAuth } from "../middleware/bearAuth";
 
-export const userRouter = new Hono();
+export const userRouter = new Hono().basePath("/api");
 // Get all users - /api/users
 userRouter.get("/users", fetchAllUserController);
 

@@ -22,7 +22,7 @@ import { bookingsRouter } from "./bookings/booking.router";
 import { paymentRouter } from "./payment/payment.router";
 import authRouter from "./auth/auth.router";
 
-const app = new Hono().basePath("/api");
+const app = new Hono();
 
 const { printMetrics, registerMetrics } = prometheus();
 
