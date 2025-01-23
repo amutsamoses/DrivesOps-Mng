@@ -136,11 +136,14 @@
       <section id="overview">
         <h2>Overview</h2>
         <p>
-          Welcome to the API documentation for the Vehicle Rental Management System. This API is built to provide backend services for managing users, vehicles, bookings, and more. 
-          The base URL is: <code>https://drivesops-mng.onrender.com</code>.
+          Welcome to the API documentation for the Vehicle Rental Management
+          System. This API is built to provide backend services for managing
+          users, vehicles, bookings, and more. The base URL is:
+          <code>https://drivesops-mng.onrender.com</code>.
         </p>
         <p>
-          Ensure all requests are authenticated where necessary and adhere to the API guidelines for successful interactions.
+          Ensure all requests are authenticated where necessary and adhere to
+          the API guidelines for successful interactions.
         </p>
       </section>
       <section id="endpoints">
@@ -157,39 +160,56 @@
         <pre><code>POST   /api/register</code></pre>
         <pre><code>POST   /api/login</code></pre>
 
+        <pre><code>GET  /api/authentication</code></pre>
+        <pre><code>GET  /api/authentication/:id</code></pre>
+        <pre><code>DELETE  /api/authentication/:id</code></pre>
+
         <h3>Branches</h3>
         <pre><code>GET    /api/branches/</code></pre>
+        <pre><code>GET    /api/branches/:id</code></pre>
         <pre><code>POST   /api/branches/</code></pre>
         <pre><code>PUT    /api/branches/:id</code></pre>
         <pre><code>DELETE /api/branches/:id</code></pre>
 
         <h3>Fleet Management</h3>
         <pre><code>GET    /api/fleet-management/</code></pre>
+        <pre><code>GET /api/fleet-management/:id</code></pre>
         <pre><code>POST   /api/fleet-management/</code></pre>
         <pre><code>PUT    /api/fleet-management/:id</code></pre>
         <pre><code>DELETE /api/fleet-management/:id</code></pre>
 
         <h3>Vehicle Specifications</h3>
         <pre><code>GET    /api/vehicle-specification/</code></pre>
+        <pre><code>GET    /api/vehicle-specification/:id</code></pre>
         <pre><code>POST   /api/vehicle-specification/</code></pre>
         <pre><code>PUT    /api/vehicle-specification/:id</code></pre>
         <pre><code>DELETE /api/vehicle-specification/:id</code></pre>
 
         <h3>Vehicles</h3>
         <pre><code>GET    /api/vehicles/</code></pre>
+        <pre><code>GET    /api/vehicles/:id</code></pre>
         <pre><code>POST   /api/vehicles/</code></pre>
         <pre><code>PUT    /api/vehicles/:id</code></pre>
         <pre><code>DELETE /api/vehicles/:id</code></pre>
 
         <h3>Support Tickets</h3>
         <pre><code>GET    /api/support-tickets/</code></pre>
+        <pre><code>GET    /api/support-tickets/:id</code></pre>
         <pre><code>POST   /api/support-tickets/</code></pre>
+        <pre><code>PUT    /api/support-tickets/:id</code></pre>
+        <pre><code>DELETE /api/support-tickets/:id</code></pre>
+        <pre><code>GET    /api/support-tickets/users/:id</code></pre>
 
         <h3>Bookings</h3>
-        <pre><code>GET    /api/bookings/</code></pre>
-        <pre><code>POST   /api/bookings/</code></pre>
+        <pre><code>GET    /api/bookings-branch-vehicle/</code></pre>
+        <pre><code>POST   /api/bookings/:id</code></pre>
+        <pre><code>PUT    /api/bookings/:id</code></pre>
+        <pre><code>DELETE /api/bookings/:id</code></pre>
 
         <h3>Payments</h3>
+        <pre><code>GET /api/payments</code></pre>
+        <pre><code>GET /api/payments/:id</code></pre>
+        <pre><code>DELETE /api/payments/:id</code></pre>
         <pre><code>POST   /api/payments/create-checkout-session</code></pre>
       </section>
     </main>
