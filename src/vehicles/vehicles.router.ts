@@ -10,7 +10,7 @@ import { vehicleSchema } from "../validator";
 import { zValidator } from "@hono/zod-validator";
 import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
-export const vehiclesRouter = new Hono();
+export const vehiclesRouter = new Hono().basePath("/api");
 
 // GET all vehicles - /api/vehicles
 vehiclesRouter.get("/vehicles", adminOrUserRoleAuth, listAllVehiclesController);

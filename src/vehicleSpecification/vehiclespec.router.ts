@@ -10,7 +10,7 @@ import { vehicleSpecificationsSchema } from "../validator";
 import { zValidator } from "@hono/zod-validator";
 import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
-export const vehicleSpecificationsRouter = new Hono();
+export const vehicleSpecificationsRouter = new Hono().basePath("/api");
 
 // GET all vehicle specifications - /api/vehicle-specifications
 vehicleSpecificationsRouter.get(

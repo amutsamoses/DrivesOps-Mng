@@ -10,7 +10,7 @@ import {
 } from "./FleetManagement.controller";
 import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
-export const fleetManagementRouter = new Hono();
+export const fleetManagementRouter = new Hono().basePath("/api");
 
 // GET all fleet management records - /api/fleet-management
 fleetManagementRouter.get(

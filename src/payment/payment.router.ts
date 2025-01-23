@@ -8,7 +8,7 @@ import {
 } from "./payment.controller";
 import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
-export const paymentRouter = new Hono();
+export const paymentRouter = new Hono().basePath("/api");
 
 // GET all payments - /api/payments
 paymentRouter.get("/payments", adminOrUserRoleAuth, listAllPaymentsController);

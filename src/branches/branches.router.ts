@@ -10,7 +10,7 @@ import { branchSchema } from "../validator";
 import { zValidator } from "@hono/zod-validator";
 import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
-export const branchRouter = new Hono();
+export const branchRouter = new Hono().basePath("/api");
 
 // GET all branches - /api/branches
 branchRouter.get("/branches", adminOrUserRoleAuth, listAllBranchesController);

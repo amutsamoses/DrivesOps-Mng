@@ -15,7 +15,7 @@ import {
   userRoleAuth,
 } from "../middleware/bearAuth";
 
-export const supportTicketsRouter = new Hono();
+export const supportTicketsRouter = new Hono().basePath("/");
 
 // GET all support tickets - /api/support-tickets
 supportTicketsRouter.get(
