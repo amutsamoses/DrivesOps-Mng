@@ -11,16 +11,18 @@ import { adminOrUserRoleAuth } from "../middleware/bearAuth";
 
 export const userRouter = new Hono();
 // Get all users - /api/users
-userRouter.get("/users", adminOrUserRoleAuth, fetchAllUserController);
+userRouter.get("/users", fetchAllUserController);
 
 // Get user by id - /api/users/:id
-userRouter.get("/users/:id", adminOrUserRoleAuth, getUserByIdController);
+userRouter.get("/users/:id", getUserByIdController);
 
 // Create user - /api/users
-userRouter.post("/users", adminOrUserRoleAuth, createUserController);
+userRouter.post("/users", createUserController);
 
 // Update user by id - /api/users/:id
-userRouter.put("/users/:id", adminOrUserRoleAuth, updateUserController);
+userRouter.put("/users/:id", updateUserController);
 
 // Delete user by id - /api/users/:id
-userRouter.delete("/users/:id", adminOrUserRoleAuth, deleteUserController);
+userRouter.delete("/users/:id", deleteUserController);
+
+// Apply middleware to the router
