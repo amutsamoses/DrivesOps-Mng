@@ -32,7 +32,7 @@ export const getFleetManagementByIdService = async (
 export const createFleetManagementService = async (
   fleet: TIFleetManagement
 ): Promise<string> => {
-  await db.insert(FleetManagementTable).values(fleet);
+  await db.insert(FleetManagementTable).values(fleet).execute();
   return "Fleet management record created successfully";
 };
 

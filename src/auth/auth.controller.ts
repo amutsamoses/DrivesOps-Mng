@@ -26,7 +26,7 @@ export const registerUserController = async (c: Context) => {
       await sendWelcomeEmail(user.email, user.username);
     } catch (error: any) {
       console.error("Failed to send email", error.message);
-      return c.json({ message: "User created but failed to send email" }, 400);
+      return c.json({ message: "User registered successful email sent" }, 400);
     }
 
     return c.json({ msg: newUser }, 201);

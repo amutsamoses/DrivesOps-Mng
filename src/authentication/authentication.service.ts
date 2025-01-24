@@ -51,8 +51,22 @@ export const updateAuthenticationService = async (
 export const deleteAuthenticationService = async (
   userId: number
 ): Promise<string> => {
-  await db
-    .delete(AuthenticationTable)
-    .where(eq(AuthenticationTable.userId, userId));
-  return "Authentication deleted successfully";
+  try {
+    const result = await db
+      .delete(AuthenticationTable)
+      .where(eq(AuthenticationTable.userId, userId))
+      .returning(); // check if the entry was deleted
+    if (result.length === 0) {
+      return "Authentication entry not found";
+    }
+
+    return "Authentication deleted successfully";
+  } catch (error: any) {
+    console.error("Error deleting authentication entry: ", error.message);
+    throw new Error("Error deleting authentication entry");
+  }
+  // await db
+  //   .delete(AuthenticationTable)
+  //   .where(eq(AuthenticationTable.userId, userId));
+  // return "Authentication deleted successfully";
 };

@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
 import { BranchesTable, TIBranch, TSBranch } from "../drizzle/schema";
+import { deleteBookingService } from "../bookings/booking.service";
 
 // service to fetch all branches
 export const fetchAllBrancheService = async (
@@ -46,6 +47,29 @@ export const updateBranchService = async (
 
 // Service to delete a branch by ID
 export const deleteBranchService = async (id: number): Promise<string> => {
-  await db.delete(BranchesTable).where(eq(BranchesTable.branchId, id));
-  return "Branch deleted successfully";
+  try {
+    const branchDelete = await deleteBookingService(id);
+    console.log(branchDelete);
+    if (branchDelete === "Booking not found") {
+      console.warn(
+        `Booking record not found for branch ${id}. Proceeding with branch deletion.`
+      );
+    } else if (
+      branchDelete !== "Booking deleted successfully" &&
+      branchDelete !== "Booking not found"
+    ) {
+      throw new Error("Failed to delete branch entry");
+    }
+    const deletedBranch = await db
+      .delete(BranchesTable)
+      .where(eq(BranchesTable.branchId, id))
+      .returning();
+    if (deletedBranch.length === 0) {
+      return "Branch not found";
+    }
+    return "Branch deleted successfully";
+  } catch (error: any) {
+    console.error("Error deleting Branch:", error);
+    throw new Error("Failed to delete branch entry");
+  }
 };

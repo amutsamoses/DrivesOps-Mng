@@ -1,6 +1,12 @@
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { UsersTable, TIUser, TSUser } from "../drizzle/schema";
+import {
+  UsersTable,
+  TIUser,
+  TSUser,
+  AuthenticationTable,
+} from "../drizzle/schema";
+import { deleteAuthenticationService } from "../authentication/authentication.service";
 
 // service to fetch users
 export const fetchAllUserService = async (
@@ -39,7 +45,35 @@ export const updateUserService = async (
 };
 
 // service to delete user by id
-export const deleteUserService = async (id: number): Promise<TIUser | string> => {
-  await db.delete(UsersTable).where(eq(UsersTable.userId, id));
-  return "User deleted successfully";
+export const deleteUserService = async (
+  id: number
+): Promise<TIUser | string> => {
+  try {
+    const authDeleted = await deleteAuthenticationService(id);
+    console.log(authDeleted);
+    if (authDeleted === "Authentication entry not found") {
+      console.warn(
+        `Authentication record not found for user ${id}. Proceeding with user deletion.`
+      );
+    } else if (
+      authDeleted !== "Authentication deleted successfully" &&
+      authDeleted !== "Authentication entry not found"
+    ) {
+      throw new Error("Failed to delete authentication entry"); //Re-throw the error if something unexpected happened
+    }
+
+    const deletedUser = await db
+      .delete(UsersTable)
+      .where(eq(UsersTable.userId, id))
+      .returning();
+    if (deletedUser.length === 0) {
+      throw new Error("User not found");
+    }
+    return "User deleted successfully";
+  } catch (error: any) {
+    console.error("Error deleting user:", error.message);
+    throw new Error("Failed to delete user");
+  }
+  // await db.delete(UsersTable).where(eq(UsersTable.userId, id));
+  // return "User deleted successfully";
 };

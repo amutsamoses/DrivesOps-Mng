@@ -48,7 +48,7 @@ export const bearAuthMiddleware = async (
     console.warn(
       `Unauthorized access attempt by user with role: ${decoded.role}`
     );
-    return c.json({ error: "Unauthorized Access: Permission denied" }, 401);
+    return c.json({ msg: "Unauthorized Access: Permission denied" }, 401);
   }
 
   // Proceed to the next middleware if all checks pass

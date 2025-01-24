@@ -65,7 +65,7 @@ export const vehicleSchema = z.object({
 export const fleetManagementSchema = z.object({
   fleetId: z.number().optional(),
   vehicleId: z.number(),
-  acquisitionDate: z.string().datetime(),
+  acquisitionDate: z.string(),
   depreciationRate: z.number(),
   currentValue: z.number(),
   maintenanceCost: z.number(),

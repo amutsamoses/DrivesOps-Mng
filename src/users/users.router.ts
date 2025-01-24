@@ -7,11 +7,11 @@ import {
   updateUserController,
   deleteUserController,
 } from "./users.controller";
-import { adminOrUserRoleAuth } from "../middleware/bearAuth";
+import { adminOrUserRoleAuth, adminRoleAuth } from "../middleware/bearAuth";
 
 export const userRouter = new Hono().basePath("/api");
 // Get all users - /api/users
-userRouter.get("/users", adminOrUserRoleAuth, fetchAllUserController);
+userRouter.get("/users", adminRoleAuth, fetchAllUserController);
 
 // Get user by id - /api/users/:id
 userRouter.get("/users/:id", adminOrUserRoleAuth, getUserByIdController);
@@ -23,6 +23,6 @@ userRouter.post("/users", adminOrUserRoleAuth, createUserController);
 userRouter.put("/users/:id", adminOrUserRoleAuth, updateUserController);
 
 // Delete user by id - /api/users/:id
-userRouter.delete("/users/:id", adminOrUserRoleAuth, deleteUserController);
+userRouter.delete("/users/:id", adminRoleAuth, deleteUserController);
 
 // Apply middleware to the router

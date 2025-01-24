@@ -94,15 +94,35 @@ export const updateBookingService = async (
   id: number,
   booking: Partial<TIBooking>
 ): Promise<string> => {
-  await db
-    .update(BookingsTable)
-    .set(booking)
-    .where(eq(BookingsTable.bookingId, id));
-  return "Booking updated successfully";
+  try {
+    const result = await db
+      .update(BookingsTable)
+      .set(booking)
+      .where(eq(BookingsTable.bookingId, id))
+      .returning();
+    if (result.length === 0) {
+      return "Booking not found";
+    }
+    return "Booking updated successfully";
+  } catch (error: any) {
+    console.error("Error updating Booking:", error);
+    throw new Error("Failed to update booking entry");
+  }
 };
 
 // Service to delete a booking by ID
 export const deleteBookingService = async (id: number): Promise<string> => {
-  await db.delete(BookingsTable).where(eq(BookingsTable.bookingId, id));
-  return "Booking deleted successfully";
+  try {
+    const result = await db
+      .delete(BookingsTable)
+      .where(eq(BookingsTable.bookingId, id))
+      .returning();
+    if (result.length === 0) {
+      return "Booking not found";
+    }
+    return "Booking deleted successfully";
+  } catch (error: any) {
+    console.error("Error deleting Booking:", error);
+    throw new Error("Failed to delete booking entry");
+  }
 };

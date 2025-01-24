@@ -1,14 +1,198 @@
 ###
 GET http://localhost:8000/
 
+
+
+//========Authentications and Authorization=======
+
+// register admin
+###
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+    "fullName": "victor peace",
+    "email": "victorpeace@gmail.com",
+    "contactPhone": "+254712345678",
+    "address": "Kutus, Kenya",
+    "password": "mypassword123",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "male",
+    "role": "admin"
+}
+
+
+// login
+###
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "victorpeace@gmail.com",
+    "password": "mypassword123"
+}
+
+
+// register user
+###
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+    "fullName": "Keeps Sam",
+    "email": "keepsamm@gmail.com",
+    "contactPhone": "+254712345678",
+    "address": "Kutus, Kenya",
+    "password": "mypassword123",
+    "location": "Nairobi",
+    "street": "Main St",
+    "dateOfBirth": "1990-01-01",
+    "gender": "male",
+    "role": "user"
+}
+
+
+// login
+###
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "keepsamm@gmail.com",
+    "password": "mypassword123"
+}
+
+
+
+// ========branches=======
+// fetch all branches
+
+###
+GET http://localhost:8000/api/branches/
+
+
+//admin
+###
+GET http://localhost:8000/api/branches/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
+
+//user
+###
+GET http://localhost:8000/api/branches/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsaW1vYW5kcmV3QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3OTk4NzU5fQ.g7h1MyKIHg4fRZI7sr5qOWNiO4iEA3y2218jR1iSlzw
+
+// create branch
+###
+POST http://localhost:8000/api/branches
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
+Content-Type: application/json
+
+{
+    "name": "Abuja Branch",
+    "address": "123 Main St, Abuja",
+    "contactPhone": "+254712345678"
+}
+
+// update branch
+###
+PUT http://localhost:8000/api/branches/1
+Content-Type: application/json
+
+{
+    "name": "Togo Branch",
+    "address": "123 Main St, Lagos",
+    "contactPhone": "+254712345678"
+}
+
+// delete branch
+###
+DELETE http://localhost:8000/api/branches/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsaW1vYW5kcmV3QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3OTk4NzU5fQ.g7h1MyKIHg4fRZI7sr5qOWNiO4iEA3y2218jR1iSlzw 
+
+
+// ========fleetmanagement=======
+// fetch all fleetmanagement
+###
+GET http://localhost:8000/api/fleet-management/
+
+// create fleetmanagement
+###
+POST http://localhost:8000/api/fleet-management
+Content-Type: application/json
+
+{
+    "fleetId": 6,
+    "vehicleId": 2,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.25,
+    "currentValue": 150000.00,
+    "maintenanceCost": 1500.00,
+    "status": "active"
+}
+
+// update fleetmanagement
+###
+PUT http://localhost:8000/api/fleet-management/1
+Content-Type: application/json
+
+{
+    "vehicleId": 3,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.20,
+    "currentValue": 10000.00,
+    "maintenanceCost": 1000.00,
+    "status": "active"
+}
+
+//delete
+###
+DELETE http://localhost:8000/api/fleet-management/5
+
+
+
+
+//=====payments checkout-sessions=======
+// creating a checkout session
+###
+POST http://localhost:8000/api/create-checkout-session
+Content-Type: application/json
+
+{
+
+    "bookingId": 4,
+    "amount": 344.56
+}
+
+// testing checkout session
+###
+GET http://localhost:8000/api/test-checkout-session
+Content-Type: application/json
+
+{
+    "bookingId": 4,
+    "amount": 200,
+    "paymentDate": "2021-09-01 00:00:00",
+    "paymentStatus": "pending",
+    "paymentMethod": "credit_card",
+    "transactionId": "ref_1234567890"
+}
+
+
+//admin
+###
+GET http://localhost:8000/api/users/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
 // users
 ###
 GET http://localhost:8000/api/users/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBoYXJtb3Nlc0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3Mzc5NjQzNTB9.q9iGefuI4b_gM1h-lZH743oUXQkCcsmygJHxqPc1m4M
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsaW1vYW5kcmV3QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3OTk4NzU5fQ.g7h1MyKIHg4fRZI7sr5qOWNiO4iEA3y2218jR1iSlzw
 
 // user create user
 ###
 POST http://localhost:8000/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
 Content-Type: application/json
 
 {
@@ -25,6 +209,7 @@ Content-Type: application/json
 // user update user
 ###
 PUT http://localhost:8000/api/users/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
 Content-Type: application/json
 
 {
@@ -40,45 +225,18 @@ Content-Type: application/json
     "gender": "male"
 }
 
+// admin delete user
+###
+DELETE http://localhost:8000/api/users/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
+
 // user delete user
 ###
-DELETE http://localhost:8000/api/users/2
+DELETE http://localhost:8000/api/users/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJsaW1vYW5kcmV3QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzM3OTk4NzU5fQ.g7h1MyKIHg4fRZI7sr5qOWNiO4iEA3y2218jR1iSlzw
 
 
-// ========fleetmanagement=======
-// fetch all fleetmanagement
-###
-GET http://localhost:8000/api/fleet-management/
 
-// create fleetmanagement
-###
-POST http://localhost:8000/api/fleet-management
-Content-Type: application/json
-
-{
-    "fleetId": 1,
-    "vehicleId": 1,
-    "acquisitionDate": "2025-01-01",
-    "depreciationRate": 0.25,
-    "currentValue": 150000.00,
-    "maintenanceCost": 1500.00,
-    "status": "active"
-}
-
-// update fleetmanagement
-###
-PUT http://localhost:8000/api/fleet-management/1
-Content-Type: application/json
-
-{
-    "fleetId": 1,
-    "vehicleId": 1,
-    "acquisitionDate": "2025-01-01",
-    "depreciationRate": 0.25,
-    "currentValue": 150000.00,
-    "maintenanceCost": 1500.00,
-    "status": "active"
-}
 
 // ========Authentications=======
 // fetch all authenticaion entries
@@ -95,38 +253,10 @@ Content-Type: application/json
     "password": "hashed_password_3",
 }
 
-
-// ========branches=======
-// fetch all branches
+//delete
 ###
-GET http://localhost:8000/api/branches/
-
-// create branch
-###
-POST http://localhost:8000/api/branches
-Content-Type: application/json
-
-{
-    "name": "Nairobi Branch",
-    "address": "123 Main St, Nairobi, Kenya",
-    "contactPhone": "+254712345678"
-}
-
-// update branch
-###
-PUT http://localhost:8000/api/branches/1
-Content-Type: application/json
-
-{
-    "name": "Nairobi Branch",
-    "address": "123 Main St, Nairobi, Kenya",
-    "contactPhone": "+254712345678"
-}
-
-// delete branch
-###
-DELETE http://localhost:8000/api/branches/1
-
+DELETE http://localhost:8000/api/authentication/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBocm1vc2VzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTczNzk5NzY5M30.bH7nsU80Zpdr2snGrVF1JkpDdknf8g7dQXl1TcPt7Ug
 
 //====vehiclespecifications====
 // fetch all vehiclespecifications
@@ -234,9 +364,10 @@ GET http://localhost:8000/api/support-tickets/user/5
 // fetch all bookings
 ###
 GET http://localhost:8000/api/bookings-branch-vehicle/
+Authorization: 
 
 ###
-GET http://localhost:8000/api/bookings/
+GET http://localhost:8000/api/bookings/1
 
 // create booking
 ###
@@ -274,31 +405,6 @@ GET http://localhost:8000/api/bookings-branch-vehicle
 
 
 
-//=====payments checkout-sessions=======
-// creating a checkout session
-###
-POST http://localhost:8000/api/create-checkout-session
-Content-Type: application/json
-
-{
-
-    "bookingId": 4,
-    "amount": 344.56
-}
-
-// testing checkout session
-###
-GET http://localhost:8000/api/test-checkout-session
-Content-Type: application/json
-
-{
-    "bookingId": 4,
-    "amount": 200,
-    "paymentDate": "2021-09-01 00:00:00",
-    "paymentStatus": "pending",
-    "paymentMethod": "credit_card",
-    "transactionId": "ref_1234567890"
-}
 
 //========Authentications and Authorization=======
 
@@ -309,7 +415,7 @@ Content-Type: application/json
 
 {
     "fullName": "Kepha Moses",
-    "email": "kepharmoses@gmail.com",
+    "email": "limoandrew@gmail.com",
     "contactPhone": "+254712345678",
     "address": "Kutus, Kenya",
     "password": "mypassword123",
@@ -317,7 +423,7 @@ Content-Type: application/json
     "street": "Main St",
     "dateOfBirth": "1990-01-01",
     "gender": "male",
-    "role": "admin"
+    "role": "user"
 }
 
 
@@ -327,6 +433,6 @@ POST http://localhost:8000/api/login
 Content-Type: application/json
 
 {
-    "email": "kepharmoses@gmail.com",
+    "email": "limoandrew@gmail.com",
     "password": "mypassword123"
 }

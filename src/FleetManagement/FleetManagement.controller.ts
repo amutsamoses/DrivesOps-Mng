@@ -42,6 +42,7 @@ export const createFleetManagementController = async (c: Context) => {
     }
     return c.json(createdFleet, 201);
   } catch (error: any) {
+    console.log(error);
     return c.json({ error: error?.message }, 400);
   }
 };
@@ -61,6 +62,7 @@ export const updateFleetManagementController = async (c: Context) => {
 
     return c.json({ msg: "Fleet management record updated successfully" }, 201);
   } catch (error: any) {
+    console.log(error);
     return c.json({ error: error?.message }, 400);
   }
 };
