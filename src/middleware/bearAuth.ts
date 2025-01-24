@@ -33,7 +33,7 @@ export const bearAuthMiddleware = async (
 ) => {
   const token = c.req.header("Authorization");
   if (!token) {
-    console.warn("No token provided in the request header."); // Log missing token
+    // console.error("No token provided in the request header."); // Log missing token
     return c.json({ error: "Authorization token is required." }, 401);
   }
 
@@ -52,20 +52,20 @@ export const bearAuthMiddleware = async (
   }
 
   // Proceed to the next middleware if all checks pass
-  return next();
+  return await next();
 };
 
 // Middleware for admin-only access
 export const adminRoleAuth = async (c: Context, next: Next) => {
-  await bearAuthMiddleware(c, next, ["admin"]);
+  return await bearAuthMiddleware(c, next, ["admin"]);
 };
 
 // Middleware for user-only access
 export const userRoleAuth = async (c: Context, next: Next) => {
-  await bearAuthMiddleware(c, next, ["user"]);
+  return await bearAuthMiddleware(c, next, ["user"]);
 };
 
 // Middleware for both admin and user access
 export const adminOrUserRoleAuth = async (c: Context, next: Next) => {
-  await bearAuthMiddleware(c, next, ["admin", "user"]);
+  return await bearAuthMiddleware(c, next, ["admin", "user"]);
 };

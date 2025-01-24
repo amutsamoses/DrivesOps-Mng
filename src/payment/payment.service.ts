@@ -104,7 +104,7 @@ interface TSessionUrl {
 }
 
 //service to initiate payment
-export const createPaymentService = async () => {
+export const createPaymentService = () => {
   return {
     async createCheckoutSession(bookingId: number, amount: number) {
       const session = await stripe.checkout.sessions.create({

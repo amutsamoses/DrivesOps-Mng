@@ -4,6 +4,7 @@ GET http://localhost:8000/
 // users
 ###
 GET http://localhost:8000/api/users/
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJrZXBoYXJtb3Nlc0BnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3Mzc5NjQzNTB9.q9iGefuI4b_gM1h-lZH743oUXQkCcsmygJHxqPc1m4M
 
 // user create user
 ###
@@ -41,8 +42,43 @@ Content-Type: application/json
 
 // user delete user
 ###
-DELETE http://localhost:8000/api/users/5
+DELETE http://localhost:8000/api/users/2
 
+
+// ========fleetmanagement=======
+// fetch all fleetmanagement
+###
+GET http://localhost:8000/api/fleet-management/
+
+// create fleetmanagement
+###
+POST http://localhost:8000/api/fleet-management
+Content-Type: application/json
+
+{
+    "fleetId": 1,
+    "vehicleId": 1,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.25,
+    "currentValue": 150000.00,
+    "maintenanceCost": 1500.00,
+    "status": "active"
+}
+
+// update fleetmanagement
+###
+PUT http://localhost:8000/api/fleet-management/1
+Content-Type: application/json
+
+{
+    "fleetId": 1,
+    "vehicleId": 1,
+    "acquisitionDate": "2025-01-01",
+    "depreciationRate": 0.25,
+    "currentValue": 150000.00,
+    "maintenanceCost": 1500.00,
+    "status": "active"
+}
 
 // ========Authentications=======
 // fetch all authenticaion entries
@@ -91,42 +127,6 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8000/api/branches/1
 
-
-
-// ========fleetmanagement=======
-// fetch all fleetmanagement
-###
-GET http://localhost:8000/api/fleet-management/
-
-// create fleetmanagement
-###
-POST http://localhost:8000/api/fleet-management
-Content-Type: application/json
-
-{
-    "fleetId": 1,
-    "vehicleId": 1,
-    "acquisitionDate": "2025-01-01",
-    "depreciationRate": 0.25,
-    "currentValue": 150000.00,
-    "maintenanceCost": 1500.00,
-    "status": "active"
-}
-
-// update fleetmanagement
-###
-PUT http://localhost:8000/api/fleet-management/1
-Content-Type: application/json
-
-{
-    "fleetId": 1,
-    "vehicleId": 1,
-    "acquisitionDate": "2025-01-01",
-    "depreciationRate": 0.25,
-    "currentValue": 150000.00,
-    "maintenanceCost": 1500.00,
-    "status": "active"
-}
 
 //====vehiclespecifications====
 // fetch all vehiclespecifications
@@ -288,13 +288,13 @@ Content-Type: application/json
 
 // testing checkout session
 ###
-POST http://localhost:8000/api/test-checkout-session
+GET http://localhost:8000/api/test-checkout-session
 Content-Type: application/json
 
 {
     "bookingId": 4,
+    "amount": 200,
     "paymentDate": "2021-09-01 00:00:00",
-    "amount": 00.00,
     "paymentStatus": "pending",
     "paymentMethod": "credit_card",
     "transactionId": "ref_1234567890"

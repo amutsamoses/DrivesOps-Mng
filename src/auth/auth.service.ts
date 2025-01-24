@@ -2,7 +2,6 @@ import db from "../drizzle/db";
 import { UsersTable, AuthenticationTable } from "../drizzle/schema";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import bcrypt from "bcrypt";
 
 // defining a zod schema for user registration data
 const UserRegistrationSchema = z.object({

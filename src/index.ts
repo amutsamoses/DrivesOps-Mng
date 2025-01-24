@@ -33,7 +33,9 @@ const customeTimeoutException = new HTTPException(408, {
 // in-built middlewares
 app.use(logger()); // logs request and response data to console
 
-app.use(csrf()); // adds csrf token to response header and checks csrf token in request header and prevent csrf attack
+// adds csrf token to response header and checks csrf token in request header and prevent csrf attack
+app.use(csrf());
+
 
 app.use(trimTrailingSlash()); // removes trailing slash from request url
 // app.use("/api/*", cors()); // adds cors headers to response

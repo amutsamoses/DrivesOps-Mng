@@ -36,7 +36,7 @@ export const getSinglePaymentController = async (c: Context) => {
   return c.json(payment, 200);
 };
 
-// creating payment controller
+// create the payment controller instance outside the functions
 const paymentController = createPaymentService();
 
 export const createPaymentController = {
@@ -47,9 +47,10 @@ export const createPaymentController = {
         `Checking if booking exists with bookingId and received: ${bookingId}, amount: ${amount}`
       );
 
-      const session = await (
-        await paymentController
-      ).createCheckoutSession(bookingId, amount);
+      const session = await paymentController.createCheckoutSession(
+        bookingId,
+        amount
+      );
 
       return c.json({ sessionId: session.id, checkoutUrl: session.url });
     } catch (error: any) {
@@ -68,14 +69,15 @@ export const createPaymentController = {
   async testingCreatedCheckoutSession(c: Context) {
     try {
       // for testing purposes only we employ hard coded values
-      const bookingId = 100;
+      const bookingId = 4;
       const amount = 10000;
       console.log(
         `Testing checkout sessions with bookingId: ${bookingId}, amount: ${amount}`
       );
-      const session = await (
-        await paymentController
-      ).createCheckoutSession(bookingId, amount);
+      const session = await paymentController.createCheckoutSession(
+        bookingId,
+        amount
+      );
 
       // trying to update the data once successful
       (await paymentController).handleSuccessfulPayment(session.id);
@@ -90,7 +92,7 @@ export const createPaymentController = {
       return c.json(
         {
           success: false,
-          error: "Failed to create checkout session",
+          error: "ERROR to create checkout session",
         },
         500
       );

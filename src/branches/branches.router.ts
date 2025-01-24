@@ -16,7 +16,7 @@ export const branchRouter = new Hono().basePath("/api");
 branchRouter.get("/branches", adminOrUserRoleAuth, listAllBranchesController);
 
 // GET branch by ID - /api/branches/:id
-branchRouter.get("/branches/:id", adminOrUserRoleAuth, getBranchByIdController);
+branchRouter.get("/branches/:id", getBranchByIdController);
 
 // POST create a new branch - /api/branches
 // branchRouter.post("/branches", createBranchController);
@@ -33,19 +33,19 @@ branchRouter.post(
       return c.json(results.error, 400);
     }
   }),
-  adminRoleAuth,
+
   createBranchController
 );
 
 branchRouter.post(
   "/branches",
   zValidator("json", branchSchema),
-  adminRoleAuth,
+
   createBranchController
 );
 
 // PUT update a branch by ID - /api/branches/:id
-branchRouter.put("/branches/:id", adminRoleAuth, updateBranchController);
+branchRouter.put("/branches/:id", updateBranchController);
 
 // DELETE a branch by ID - /api/branches/:id
-branchRouter.delete("/branches/:id", adminRoleAuth, deleteBranchController);
+branchRouter.delete("/branches/:id", deleteBranchController);
